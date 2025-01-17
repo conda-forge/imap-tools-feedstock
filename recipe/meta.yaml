@@ -1,5 +1,5 @@
 {% set name = "imap-tools" %}
-{% set version = "1.9.0" %}
+{% set version = "1.9.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: 516a3477f16dedea91ac2316dc6f891f27f144266af6134c203ec852a27719f7
+  sha256: c2a866ec8c875613b6306b5874bd82d126d94ff85fbc6d5180f038f25af336f1
 
 build:
   noarch: python
