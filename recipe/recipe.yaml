@@ -1,0 +1,43 @@
+schema_version: 1
+
+context:
+  name: imap-tools
+  version: "1.15.0"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name | replace('-', '_') }}-${{ version }}.tar.gz
+  sha256: a90f948549ab000d96caf17c90e63b114f8788ba4a0d3f9274a96c0e108c3805
+
+build:
+  number: 1
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - pip
+    - setuptools
+  run:
+    - python >=${{ python_min }}
+
+tests:
+  - python:
+      imports:
+        - imap_tools
+      pip_check: true
+      python_version: ${{ python_min }}
+
+about:
+  summary: Work with email by IMAP
+  license: Apache-2.0
+  license_file: LICENSE
+  homepage: https://github.com/ikvk/imap_tools
+
+extra:
+  recipe-maintainers:
+    - jan-janssen
